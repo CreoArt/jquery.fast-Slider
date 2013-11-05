@@ -6,6 +6,7 @@ Jquery sample slider
 Example
 
 HTML:
+```html
 <div id="slider">
     <a href="#" class="prev"></a>
     <ul>
@@ -27,7 +28,9 @@ HTML:
     </ul>
     <a href="#" class="next"></a>
 </div>
+```
 Javascript:
+```javascript
 $('#main-slider').Slider({
 		next_bt: '.next', // next button class
 		prev_bt: '.prev', // prev button class
@@ -36,3 +39,4 @@ $('#main-slider').Slider({
 		duration: 1000 // animation speed
         obj: 3, // visible objects
     });
+```
