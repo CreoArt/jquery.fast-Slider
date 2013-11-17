@@ -49,7 +49,7 @@
                     });
                 });
                 if(s.hs) {
-                    if (debug)
+                    if (s.debug)
                         console.log('li max height: '+hh);
                     $(this).height(hh);
                 }
