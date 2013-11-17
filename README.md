@@ -32,11 +32,12 @@ HTML:
 Javascript:
 ```javascript
 $('#main-slider').Slider({
-		next_bt: '.next', // next button class
-		prev_bt: '.prev', // prev button class
-		bt_hide: false, // hide button if not object to scroll
-		hs: true, // set ul max height
-		duration: 1000 // animation speed
-        obj: 3, // visible objects
-    });
+	next_bt: '.next', // next button class
+	prev_bt: '.prev', // prev button class
+	bt_hide: false, // hide button if not object to scroll
+	hs: true, // set ul max height
+	duration: 1000, // animation speed
+	obj: 3, // visible objects
+	debug: false // debug mode
+});
 ```

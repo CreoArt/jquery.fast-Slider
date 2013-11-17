@@ -8,6 +8,7 @@
                 duration: 1000,
                 obj: 3,
                 pos: 0,
+                debug: false,
                 animating: false
             }, s),
             windowLoaded = false,
@@ -17,26 +18,28 @@
             next_bt = $(s.next_bt, this),
             prev_bt = $(s.prev_bt, this)
             hh = 0, ulw = 0;
-
-
-        console.log('id: '+$(this).attr('id'));
+        if (s.debug)
+            console.log('id: '+$(this).attr('id'));
 
         var make = function() {
             if (s.bt_hide)
                 prev_bt.hide();
             var setup = function() {
                 windowLoaded = true;
-                console.log('--- Slider setup ---');
-                console.log('--- Settings ---');
-                console.log(s);
-                console.log('li.length: '+li.length);
-                console.log('ul setup css');
+                if (s.debug) {
+                    console.log('--- Slider setup ---');
+                    console.log('--- Settings ---');
+                    console.log(s);
+                    console.log('li.length: '+li.length);
+                    console.log('ul setup css');
+                }
                 ul.css({
                     'position': 'relative',
                     'float': 'left',
                     'width': '9999px'
                 });
-                console.log('li setup css and max height');
+                if (s.debug)
+                    console.log('li setup css and max height');
                 li.each(function() {
                     if (hh < $(this).outerHeight(true))
                         hh = $(this).outerHeight(true);
@@ -45,9 +48,10 @@
                         'float': 'left'
                     });
                 });
-                console.log('li max height: '+hh);
-                if(s.hs)
+                if(s.hs) {
+                    console.log('li max height: '+hh);
                     $(this).height(hh);
+                }
             };
             var next = function() {
                 if (s.animating || !windowLoaded) {
@@ -57,7 +61,6 @@
                 var stop = 0;
                 var st = "$(this)";
                 var end = ".animate({left: '-'+twh+'px'}, s.duration, function() { $(this).css('left','');});"
-                console.log('s: '+ s.animating);
                 li.each(function(index) {
                     var twh = 0;
                     if ($(this).css('display') != 'none' && index != li.length-1 && stop == 0) {
@@ -70,8 +73,6 @@
                         }
                         for (var i = 0; i < s.obj; i++) {
                             st += ".next()";
-                            // console.log(st+'.html()');
-                            // console.log(eval(st+'.html()'));
                             if(!eval(st+'.html()') && i < s.obj-1) {
                                 s.animating = false;
                                 return false;
@@ -119,7 +120,6 @@
                 for (var i = 0; i < s.obj; i++) {
                     if(i != 0)
                         st += ".next()";
-                    // console.log(st+end);
                     eval(st+end);
                 }
                 if($('li:hidden', ul).length == 0 && s.bt_hide)
