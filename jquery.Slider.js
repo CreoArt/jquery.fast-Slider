@@ -51,12 +51,13 @@
             };
             var next = function() {
                 if (s.animating || !windowLoaded) {
-                    return;
+                    return false;
                 }
                 s.animating = true;
                 var stop = 0;
                 var st = "$(this)";
                 var end = ".animate({left: '-'+twh+'px'}, s.duration, function() { $(this).css('left','');});"
+                console.log('s: '+ s.animating);
                 li.each(function(index) {
                     var twh = 0;
                     if ($(this).css('display') != 'none' && index != li.length-1 && stop == 0) {
@@ -90,12 +91,15 @@
                         if(s.bt_hide)
                             prev_bt.show();
                     }
+                    if ($(this).css('display') != 'none' && index == li.length-1 && stop == 0) {
+                        s.animating = false;
+                    }
                 });
                 return false;
             };
             var prev = function() {
                 if (s.animating || !windowLoaded) {
-                    return;
+                    return false;
                 }
                 s.animating = true;
                 var lihl = $('li:hidden:last', ul),
