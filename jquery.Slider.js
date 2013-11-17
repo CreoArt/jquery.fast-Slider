@@ -49,7 +49,8 @@
                     });
                 });
                 if(s.hs) {
-                    console.log('li max height: '+hh);
+                    if (debug)
+                        console.log('li max height: '+hh);
                     $(this).height(hh);
                 }
             };
