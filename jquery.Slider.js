@@ -119,13 +119,19 @@
                     $('#SliderOverlay').click($this.overlay_close);
                     $('#SliderOverlayClose').click($this.overlay_close);
                 }
-                $('#SliderOverlayBox').show('slow');
                 if (o.type == 'gallary') {
                     $('#SliderOverlayNext').click($this.gallary_next);
                     $('#SliderOverlayPrev').click($this.gallary_prev);
                 }
-                if (cb)
-                    cb();
+                if ($('#SliderOverlayBox').is(':hidden')) {
+                    $('#SliderOverlayBox').show('slow', function(){
+                        if (cb)
+                            cb();
+                    });
+                } else {
+                    if (cb)
+                        cb();
+                }
             };
             $this.overlay_close = function() {
                 $('#SliderOverlay').remove();
