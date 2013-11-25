@@ -102,22 +102,19 @@
                     $this.overlay_bind(o, cb);
                 } else {
                     $('#SliderOverlayBox').css({
-                        width: o.width,
-                        height: o.height
+                        width: o.width+'px',
+                        height: o.height+'px'
                     });
                     $('#SliderOverlayBox').html(text+''+close+''+next+''+prev);
-                    // $('#SliderOverlayBox').hide('slow', function(){
-                        // $('#SliderOverlayBox').remove();
-                        // $('body').append('<div id="SliderOverlayBox" style="display:none;position:fixed;top:50%;left:50%;background:#fff;z-index:1001;width:'+o.width+';height:'+o.height+';'+o.style+'">'+text+''+close+''+next+''+prev+'</div>');
-                        $this.overlay_bind(o, cb);
-                    // });
+                    $this.overlay_bind(o, cb);
                 }
             };
             $this.overlay_bind = function(o, cb) {
                 $('#SliderOverlayBox').css({
-                    'margin-top': '-'+($('#SliderOverlayBox').outerHeight()/2),
-                    'margin-left': '-'+($('#SliderOverlayBox').outerWidth()/2)
+                    'margin-top': '-'+($('#SliderOverlayBox').outerHeight()/2)+'px',
+                    'margin-left': '-'+($('#SliderOverlayBox').outerWidth()/2)+'px'
                 });
+                console.log($('#SliderOverlayBox').css('margin-top'));
                 if (o.close) {
                     $('#SliderOverlay').click($this.overlay_close);
                     $('#SliderOverlayClose').click($this.overlay_close);
@@ -170,11 +167,10 @@
             };
             $this.gallary_load = function(idx,img) {
                 var osw = {
-                    width: '175px',
                     style: 'padding:20px;',
                     close: false
                 }
-                $this.overlay(osw, 'Подождите идет загрузка...', function() {
+                $this.overlay(osw, '<center>Подождите идет загрузка...</center>', function() {
                     var image = new Image();
                     image.onload = function() {
                         var os = {
@@ -182,9 +178,9 @@
                             height: this.height,
                             type: 'gallary',
                             idx: idx
-                        }
+                        };
                         $this.overlay(os, '<img src="'+this.src+'" border="0">');
-                    }
+                    };
                     image.src = img+'?'+(new Date().getTime());
                 });
             };

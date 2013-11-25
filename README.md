@@ -3,6 +3,8 @@ jqeury.slider
 
 Jquery sample slider
 
+[DEMO](http://miklesol.github.io/jqeury.slider/)
+
 Example
 
 HTML:
@@ -31,13 +33,13 @@ HTML:
 ```
 Javascript:
 ```javascript
-$('#main-slider').Slider({
+$('#slider').Slider({
 	next_bt: '.next', // next button class
 	prev_bt: '.prev', // prev button class
 	bt_hide: false, // hide button if not object to scroll
+    type: false // gallary - gallary mode
 	hs: true, // set ul max height
 	duration: 1000, // animation speed
-	obj: 3, // visible objects
 	debug: false // debug mode
 });
 ```
