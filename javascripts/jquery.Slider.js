@@ -90,11 +90,11 @@
                     }, o),
                     close = '', next = '', prev = '';
                 if (o.type == 'gallary') {
-                    next = '<div id="SliderOverlayNext" style="position:absolute;top:0;bottom:0;right:-20px;background: url(\'images/slider-next.png\') right center no-repeat; width:70px;cursor:pointer;" rel="'+o.idx+'"></div>';
-                    prev = '<div id="SliderOverlayPrev" style="position:absolute;top:0;bottom:0;left:-20px;background: url(\'images/slider-prev.png\') left center no-repeat; width:70px;cursor:pointer;" rel="'+o.idx+'"></div>'
+                    next = '<div id="SliderOverlayNext" style="position:absolute;top:0;bottom:0;right:-20px;background: url(\'/images/slider-next.png\') right center no-repeat; width:70px;cursor:pointer;" rel="'+o.idx+'"></div>';
+                    prev = '<div id="SliderOverlayPrev" style="position:absolute;top:0;bottom:0;left:-20px;background: url(\'/images/slider-prev.png\') left center no-repeat; width:70px;cursor:pointer;" rel="'+o.idx+'"></div>'
                 }
                 if (o.close)
-                    close = '<img id="SliderOverlayClose" style="position:absolute;top:-24px;right:-24px;z-index:1002;cursor:pointer;" src="images/slider-close.png">';
+                    close = '<img id="SliderOverlayClose" style="position:absolute;top:-24px;right:-24px;z-index:1002;cursor:pointer;" src="/images/slider-close.png">';
                 if($('#SliderOverlay').html() == null)
                     $('body').append('<div id="SliderOverlay" style="position:fixed;top:0;bottom:0;left:0;right:0;background:#000;opacity:0.5;z-index:1000;"></div>');
                 if($('#SliderOverlayBox').html() == null) {
@@ -119,13 +119,14 @@
                     $('#SliderOverlay').click($this.overlay_close);
                     $('#SliderOverlayClose').click($this.overlay_close);
                 }
-                $('#SliderOverlayBox').show('slow');
                 if (o.type == 'gallary') {
                     $('#SliderOverlayNext').click($this.gallary_next);
                     $('#SliderOverlayPrev').click($this.gallary_prev);
                 }
-                if (cb)
-                    cb();
+                $('#SliderOverlayBox').show('slow', function(){
+                    if (cb)
+                        cb();
+                });
             };
             $this.overlay_close = function() {
                 $('#SliderOverlay').remove();
