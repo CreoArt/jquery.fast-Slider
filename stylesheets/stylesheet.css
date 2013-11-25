@@ -443,7 +443,7 @@ Small Device Styles
   right: 0;
   width: 30px;
   cursor: pointer;
-  background: url(/images/slider-next.png) no-repeat center #fff;
+  background: url(/jqeury.slider/images/slider-next.png) no-repeat center #fff;
   z-index: 1;
 }
 .prev {
@@ -453,7 +453,7 @@ Small Device Styles
   left: 0;
   width: 30px;
   cursor: pointer;
-  background: url(/images/slider-prev.png) no-repeat center #fff;
+  background: url(/jqeury.slider/images/slider-prev.png) no-repeat center #fff;
   z-index: 1;
 }
 ul {
