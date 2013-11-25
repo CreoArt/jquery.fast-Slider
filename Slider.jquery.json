@@ -20,7 +20,7 @@
         "bugs": "https://github.com/mike1pol/jqeury.slider/issues",
         "homepage": "http://mike1pol.github.io/jqeury.slider",
         "docs": "https://github.com/mike1pol/jqeury.slider/wiki",
-        "download": "https://raw.github.com/mike1pol/jqeury.slider/master/jquery.Slider.min.js",
+        "download": "https://raw.github.com/mike1pol/jqeury.slider/master/jquery.Slider.js",
         "dependencies": {
                 "jquery": ">=1.7"
         }
