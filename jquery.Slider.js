@@ -12,7 +12,6 @@
                 animating: false
             }, s);
         $this.windowLoaded = false; $this.ul = $('ul:first',this); $this.li = $('li', $this.ul); $this.lif = $('li:first', $this.ul); $this.idx = 0; $this.id = $(this).attr('id'); $this.next_bt = $(s.next_bt, this); $this.prev_bt = $(s.prev_bt, this); $this.hh = 0; $this.ulw = 0; $this.ulfw = 0; $this.obj = 0; $this.objr = 0; $this.liw = 0;
-
         var make = function() {
             if (s.bt_hide)
                 $this.prev_bt.hide();
@@ -114,7 +113,6 @@
                     'margin-top': '-'+($('#SliderOverlayBox').outerHeight()/2)+'px',
                     'margin-left': '-'+($('#SliderOverlayBox').outerWidth()/2)+'px'
                 });
-                console.log($('#SliderOverlayBox').css('margin-top'));
                 if (o.close) {
                     $('#SliderOverlay').click($this.overlay_close);
                     $('#SliderOverlayClose').click($this.overlay_close);
