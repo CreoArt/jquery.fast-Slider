@@ -1,10 +1,10 @@
 {
-        "name": "Slider",
-        "title": "jQuery simple Slider",
+        "name": "jQuery Slider & gallary",
+        "title": "jQuery Slider & gallary",
         "description": "Simple images slider & gallary",
         "keywords": [
                 "slider",
-                "gallary"
+                "jqeury"
         ],
         "version": "0.0.1",
         "author": {
