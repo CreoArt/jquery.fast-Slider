@@ -9,7 +9,8 @@
                 hs: false,
                 duration: 1000,
                 debug: false,
-                animating: false
+                animating: false,
+                npl: false
             }, s);
         $this.windowLoaded = false; $this.ul = $('ul:first',this); $this.li = $('li', $this.ul); $this.lif = $('li:first', $this.ul); $this.idx = 0; $this.id = $(this).attr('id'); $this.next_bt = $(s.next_bt, this); $this.prev_bt = $(s.prev_bt, this); $this.hh = 0; $this.ulw = 0; $this.ulfw = 0; $this.obj = 0; $this.objr = 0; $this.liw = 0;
         var make = function() {
@@ -39,7 +40,10 @@
                     'float': 'left',
                     'width': '9999px'
                 });
-                $this.ulfw = ($($this).outerWidth()-$this.next_bt.outerWidth()-$this.prev_bt.outerWidth());
+                if (s.npl)
+                    $this.ulfw = $($this).outerWidth();
+                else
+                    $this.ulfw = ($($this).outerWidth()-$this.next_bt.outerWidth()-$this.prev_bt.outerWidth());
                 if (s.debug) {
                     console.log('container width: '+$($this).outerWidth());
                     console.log('next bottom width: '+$this.next_bt.outerWidth());
