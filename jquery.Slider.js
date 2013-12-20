@@ -10,20 +10,21 @@
                 duration: 1000,
                 debug: false,
                 animating: false,
-                npl: false
+                circle: false
             }, s);
-        $this.windowLoaded = false; $this.ul = $('ul:first',this); $this.li = $('li', $this.ul); $this.lif = $('li:first', $this.ul); $this.idx = 0; $this.id = $(this).attr('id'); $this.next_bt = $(s.next_bt, this); $this.prev_bt = $(s.prev_bt, this); $this.hh = 0; $this.ulw = 0; $this.ulfw = 0; $this.obj = 0; $this.objr = 0; $this.liw = 0;
+        $this.s = s;
+        $this.windowLoaded = false; $this.ul = $('ul:first',this); $this.li = $('li', $this.ul); $this.lif = $('li:first', $this.ul); $this.idx = 0; $this.id = $(this).attr('id'); $this.next_bt = $($this.s.next_bt, this); $this.prev_bt = $($this.s.prev_bt, this); $this.hh = 0; $this.ulw = 0; $this.ulfw = 0; $this.obj = 0; $this.objr = 0; $this.liw = 0;
         var make = function() {
-            if (s.bt_hide)
+            if ($this.s.bt_hide && !$this.s.circle)
                 $this.prev_bt.hide();
             $this.setup = function() {
                 $this.windowLoaded = true;
-                if (s.debug) {
+                if ($this.s.debug) {
                     console.log('--- Slider setup ---');
                     console.log('id: '+$this.id);
                     console.log('--- Settings ---');
                     console.log(s);
-                    if (s.type == 'gallary')
+                    if ($this.s.type == 'gallary')
                         console.log('gallary mode');
                     console.log('li.length: '+$this.li.length);
                     console.log('container & ul setup css');
@@ -33,36 +34,30 @@
                     'position': 'relative'
                 });
                 $this.ul.css({
-                    'padding': '0',
                     'list-style': 'none',
                     'overflow': 'hidden',
                     'position': 'relative',
                     'float': 'left',
                     'width': '9999px'
                 });
-                if (s.npl)
-                    $this.ulfw = $($this).outerWidth();
-                else
-                    $this.ulfw = ($($this).outerWidth()-$this.next_bt.outerWidth()-$this.prev_bt.outerWidth());
-                if (s.debug) {
+                $this.ulfw = ($($this).outerWidth()-$this.next_bt.outerWidth()-$this.prev_bt.outerWidth());
+                if ($this.s.debug) {
                     console.log('container width: '+$($this).outerWidth());
                     console.log('next bottom width: '+$this.next_bt.outerWidth());
                     console.log('prev bottom width: '+$this.prev_bt.outerWidth());
                     console.log('ul factory width: '+ $this.ulfw);
                 }
-                if (s.debug)
+                if ($this.s.debug)
                     console.log('li setup css and max height');
                 $this.li.each(function() {
                     if ($this.hh < $(this).outerHeight(true))
                         $this.hh = $(this).outerHeight(true);
                     $(this).css({
-                        'padding': '0',
-                        'margin': '0',
                         'list-style': 'none',
                         'position': 'relative',
                         'float': 'left'
                     });
-                    if (s.type == 'gallary') {
+                    if ($this.s.type == 'gallary') {
                         $(this).addClass('gl_'+$this.id);
                         $(this).attr('rel','gl_'+$this.id+'_'+$this.idx);
                         $(this).css('cursor','pointer');
@@ -72,11 +67,11 @@
                 });
                 $this.obj = Math.ceil($this.ulfw / $this.li[0].clientWidth);
                 $this.objr = ($this.ulfw / $this.li[0].clientWidth);
-                if (s.debug) {
+                if ($this.s.debug) {
                     console.log('Obj: '+$this.obj);
                     console.log('Objr: '+$this.objr);
                 }
-                if(s.hs) {
+                if($this.s.hs) {
                     if (s.debug)
                         console.log('li max height: '+$this.hh);
                     $(this).height($this.hh);
@@ -193,70 +188,58 @@
                 });
             };
             $this.next = function() {
-                if (s.animating || !$this.windowLoaded) {
+                if ($this.s.animating || !$this.windowLoaded) {
                     return false;
                 }
-                s.animating = true;
+                $this.s.animating = true;
                 var stop = 0;
-                var st = "$(this)";
-                var end = ".animate({left: '-'+twh+'px'}, s.duration, function() { $(this).css('left','');});"
-                $this.li.each(function(index) {
-                    var twh = 0;
-                    if ($(this).css('display') != 'none' && index != $this.li.length-1 && stop == 0) {
-                        if (index == ($this.li.length - $this.obj - 1) && s.bt_hide) {
-                            $this.next_bt.hide();
-                        }
-                        if (index == $this.li.length) {
-                            s.animating = false;
-                            return false;
-                        }
-                        if (($this.obj == $this.objr && index == $this.li.length - $this.obj)) {
-                            s.animating = false;
-                            return false;
-                        }
-                        for (var i = 0; i < $this.obj; i++) {
-                            st += ".next()";
-                            if(!eval(st+'.html()') && i < $this.obj-1) {
-                                s.animating = false;
-                                return false;
-                            }
-                        }
-                        twh = $(this).outerWidth(true);
-                        $(this).animate({left: '-'+twh+'px'}, s.duration, function() {
-                            $(this).hide();
-                            s.animating = false;
-                        });
-                        st = "$(this)";
-                        for (var i = 0; i < $this.obj; i++) {
-                            st += ".next()";
-                            eval(st+end);
-                        }
-                        stop = 1;
-                        if(s.bt_hide)
-                            $this.prev_bt.show();
-                    }
-                    if ($(this).css('display') != 'none' && index == $this.li.length-1 && stop == 0) {
-                        s.animating = false;
-                    }
+                var st = "$(el)";
+                var end = ".animate({left: '-'+twh+'px'}, $this.s.duration, function() { $(this).css('left','');});";
+                var el = $('li:not(:hidden):first', $this.ul),
+                    eln = $('li:not(:hidden)', $this.ul);
+                if (!$this.s.circle && $this.s.bt_hide && eln.length <= ($this.objr + 1))
+                    $this.next_bt.hide();
+                if (eln.length <= $this.objr && !$this.s.circle) {
+                    $this.s.animating = false;
+                    return false;
+                }
+                if (eln.length <= $this.objr && $this.s.circle)
+                    $('li:first', $this.ul).appendTo($this.ul).css('left',0).show();
+                twh = $(el).outerWidth(true);
+                $(el).animate({left: '-'+twh+'px'}, $this.s.duration, function() {
+                    $(this).hide();
+                    $this.s.animating = false;
                 });
+                for (var i = 0; i < $this.obj; i++) {
+                    st += ".next()";
+                    eval(st+end);
+                }
+                $this.s.animating = false;
                 return false;
             };
             $this.prev = function() {
-                if (s.animating || !$this.windowLoaded) {
+                if ($this.s.animating || !$this.windowLoaded) {
                     return false;
                 }
-                s.animating = true;
+                $this.s.animating = true;
                 var lihl = $('li:hidden:last', $this.ul),
                     linhf = $('li:not(:hidden):first', $this.ul);
-                if($('li:hidden', $this.ul).length == 0 && !s.bt_hide) {
-                    s.animating = false;
+                if ($('li:hidden', $this.ul).length == 0 && !$this.s.bt_hide && !$this.s.circle) {
+                    $this.s.animating = false;
                     return false;
+                }
+                if ($('li:hidden', $this.ul).length == 0 && $this.s.circle) {
+                    var el = $('li:last', $this.ul);
+                    twh = el.outerWidth(true);
+                    $(el).css({left: '-'+twh+'px'});
+                    el.insertBefore($('li:first', $this.ul))
+                    lihl = el;
                 }
                 var twh = lihl.outerWidth(true);
                 lihl.show();
                 lihl.animate({left: '0px'}, 1000, function() {
                     $(this).css('left','');
-                    s.animating = false;
+                    $this.s.animating = false;
                 });
                 var st = "linhf";
                 var end = ".css('left','-'+twh+'px').animate({left: '0px'}, 1000, function() {$(this).css('left','');});"
@@ -265,9 +248,9 @@
                         st += ".next()";
                     eval(st+end);
                 }
-                if($('li:hidden', $this.ul).length == 0 && s.bt_hide)
+                if($('li:hidden', $this.ul).length == 0 && $this.s.bt_hide)
                     $this.prev_bt.hide();
-                if(s.bt_hide)
+                if($this.s.bt_hide)
                     $this.next_bt.show();
                 return false;
             };
