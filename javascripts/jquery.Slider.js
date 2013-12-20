@@ -203,7 +203,7 @@
                     $this.s.animating = false;
                     return false;
                 }
-                if (eln.length <= $this.objr && $this.s.circle)
+                if (eln.length <= ($this.objr + 1) && $this.s.circle)
                     $('li:first', $this.ul).appendTo($this.ul).css('left',0).show();
                 twh = $(el).outerWidth(true);
                 $(el).animate({left: '-'+twh+'px'}, $this.s.duration, function() {
@@ -248,9 +248,9 @@
                         st += ".next()";
                     eval(st+end);
                 }
-                if($('li:hidden', $this.ul).length == 0 && $this.s.bt_hide)
+                if($('li:hidden', $this.ul).length == 0 && $this.s.bt_hide && !$this.s.circle)
                     $this.prev_bt.hide();
-                if($this.s.bt_hide)
+                if(!$this.s.circle && $this.s.bt_hide)
                     $this.next_bt.show();
                 return false;
             };
