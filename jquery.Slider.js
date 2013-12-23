@@ -214,7 +214,6 @@
                     st += ".next()";
                     eval(st+end);
                 }
-                $this.s.animating = false;
                 return false;
             };
             $this.prev = function() {
