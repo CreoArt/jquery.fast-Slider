@@ -1,5 +1,5 @@
 /**!
- * jquery.Slider
+ * jquery.fast-Slider
  * @author CreoArt
  * @license Apache 2.0
  * @site https://github.com/CreoArt/jqeury.slider
