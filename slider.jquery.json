@@ -1,0 +1,28 @@
+{
+        "name": "jQuery Slider & gallery",
+        "title": "jQuery Slider & gallery",
+        "description": "Simple images slider & gallery",
+        "keywords": [
+                "slider",
+                "gallery",
+                "jqeury"
+        ],
+        "version": "0.1.0",
+        "author": {
+                "name": "CreoArt",
+                "url": "https://github.com/CreoArt"
+        },
+        "licenses": [
+                {
+                        "type": "Apache License",
+                        "url": "https://github.com/CreoArt/jqeury.slider/blob/master/LICENSE"
+                }
+        ],
+        "bugs": "https://github.com/CreoArt/jqeury.slider/issues",
+        "homepage": "http://creoart.github.io/jqeury.slider",
+        "docs": "https://github.com/CreoArt/jqeury.slider/wiki",
+        "download": "https://raw.github.com/CreoArt/jqeury.slider/master/jquery.Slider.js",
+        "dependencies": {
+                "jquery": ">=1.7"
+        }
+}
