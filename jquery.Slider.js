@@ -1,3 +1,9 @@
+/**!
+ * jquery.Slider
+ * @author CreoArt
+ * @license Apache 2.0
+ * @site https://github.com/CreoArt/jqeury.slider
+ */
 (function($) {
     $.fn.Slider = function(s) {
         var $this = this,
