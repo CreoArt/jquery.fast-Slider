@@ -1,13 +1,13 @@
 {
-        "name": "jQuery fast Slider",
-        "title": "jQuery Slider / overlay gallery",
-        "description": "Simple images slider & gallery",
+        "name": "fast-Slider",
+        "title": "jQuery fast Slider / gallery",
+        "description": "Simple images slider & overlay gallery",
         "keywords": [
                 "slider",
                 "gallery",
                 "jqeury"
         ],
-        "version": "0.1.0",
+        "version": "1.0",
         "author": {
                 "name": "CreoArt",
                 "url": "https://github.com/CreoArt"
