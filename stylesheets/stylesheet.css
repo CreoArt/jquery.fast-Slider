@@ -443,7 +443,7 @@ Small Device Styles
   right: 0;
   width: 30px;
   cursor: pointer;
-  background: url(/jqeury.slider/images/slider-next.png) no-repeat center #fff;
+  background: url(images/slider-next.png) no-repeat center #fff;
   outline: none;
   z-index: 1;
 }
@@ -455,7 +455,7 @@ Small Device Styles
   width: 30px;
   cursor: pointer;
   outline: none;
-  background: url(/jqeury.slider/images/slider-prev.png) no-repeat center #fff;
+  background: url(images/slider-prev.png) no-repeat center #fff;
   z-index: 1;
 }
 ul {
