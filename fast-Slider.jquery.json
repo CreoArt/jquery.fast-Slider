@@ -15,13 +15,13 @@
         "licenses": [
                 {
                         "type": "Apache License",
-                        "url": "https://github.com/CreoArt/jqeury.slider/blob/master/LICENSE"
+                        "url": "https://github.com/CreoArt/jqeury.fast-Slider/blob/master/LICENSE"
                 }
         ],
-        "bugs": "https://github.com/CreoArt/jqeury.slider/issues",
-        "homepage": "http://creoart.github.io/jqeury.slider",
-        "docs": "https://github.com/CreoArt/jqeury.slider/wiki",
-        "download": "https://raw.github.com/CreoArt/jqeury.slider/master/jquery.Slider.js",
+        "bugs": "https://github.com/CreoArt/jqeury.fast-Slider/issues",
+        "homepage": "http://creoart.github.io/jqeury.fast-Slider",
+        "docs": "https://github.com/CreoArt/jqeury.fast-Slider/wiki",
+        "download": "https://raw.github.com/CreoArt/jqeury.fast-Slider/master/jquery.fast-Slider.js",
         "dependencies": {
                 "jquery": ">=1.7"
         }
