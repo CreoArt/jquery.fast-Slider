@@ -2,7 +2,7 @@
  * jquery.Slider
  * @author CreoArt
  * @license Apache 2.0
- * @site https://github.com/CreoArt/jqeury.slider
+ * @site https://github.com/CreoArt/jqeury.fast-Sliderß
  */
 (function($) {
     $.fn.Slider = function(s) {
