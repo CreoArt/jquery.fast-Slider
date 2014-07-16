@@ -78,4 +78,4 @@ $(document).ready(function() {
 	});
 });
 ```
-[Demo](http://creoart.github.io/jqeury.fast-Slider)
+[Demo](http://creoart.github.io/jquery.fast-Slider)
